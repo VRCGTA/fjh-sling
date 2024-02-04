@@ -17,7 +17,9 @@ Citizen.CreateThread(function()
               local wep_hash = Config.compatable_weapon_hashes[item.name].hash
               
               if not attached_weapons[wep_model] and GetSelectedPedWeapon(me) ~= wep_hash then
-                  AttachWeapon(wep_model, wep_hash, Config.Positions[sling].bone, Config.Positions[sling].x, Config.Positions[sling].y, Config.Positions[sling].z, Config.Positions[sling].x_rotation, Config.Positions[sling].y_rotation, Config.Positions[sling].z_rotation)
+                local positions = Config.Positions[Config.compatable_weapon_hashes[item.name].type][sling]
+                print(positions)
+                AttachWeapon(wep_model, wep_hash, positions.bone, positions.x, positions.y, positions.z, positions.x_rotation, positions.y_rotation, positions.z_rotation)
               end
             end
           end
